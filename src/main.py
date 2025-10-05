@@ -60,7 +60,6 @@ for i in range(len(solves) - 4):
 mean = sum(solve.get_time_float() for solve in solves) / len(solves)
 
 plt.margins(0)
-#plt.ylim(0)
 
 plt.xlabel("Index")
 plt.ylabel("Time")
@@ -71,13 +70,13 @@ plt.plot(x_times, individual_times, label="Solves")
 plt.plot(x_mo3, mo3, label="mo3")
 plt.plot(x_ao5, ao5, label="ao5")
 
-# My personal information, remove this during use
+# My personal information
 new_cube = 138
 if os.getenv("PERSONAL", "False") == "True":
   plt.axvspan(new_cube, len(solves), color='yellow', alpha=0.25)
   plt.axvline(new_cube, color='red', linestyle='--')
   plt.text(new_cube+1, mean, "New Megaminx (YJ Megaminx YuHu V2 M)", rotation=90)
-# My personal information, remove this during use
+# My personal information
 
 if __name__ == "__main__":
   plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.1), fancybox=True, shadow=True)
