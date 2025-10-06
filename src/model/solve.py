@@ -3,6 +3,7 @@ import dataclasses
 @dataclasses.dataclass(kw_only=True)
 class Solve:
   idx: int
+  date: str
   time: str
 
   def get_time_float(self):

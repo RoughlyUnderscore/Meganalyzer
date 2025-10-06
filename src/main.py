@@ -8,12 +8,12 @@ from matplotlib.ticker import FuncFormatter
 from model import Solve
 
 df = pd.read_csv("input.csv").rename(
-  columns={"No.": "idx", "Time": "time"}
+  columns={"No.": "idx", "Date": "date", "Time": "time"}
 )
 
 solves = [
   Solve(**row._asdict())
-  for row in df[["idx", "time"]].itertuples(index=False)
+  for row in df[["idx", "date", "time"]].itertuples(index=False)
 ]
 
 
@@ -43,7 +43,7 @@ best_scatter = plt.scatter(best_times.keys(), best_times.values(), color="red")
 
 cur = mpl.cursor(best_scatter, hover=True)
 cur.connect("add", lambda sel: sel.annotation.set_text(
-  f"Solve {best_x[sel.index]}: {format_time(best_y[sel.index], 0)}"
+  f"Solve {best_x[sel.index]}: {format_time(best_y[sel.index], 0)} ({solves[best_x[sel.index] - 1].date})"
 ))
 
 
